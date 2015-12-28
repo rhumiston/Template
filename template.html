@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Kemtah Template builder</title>
+	<!-- Written for The Kemtah Group by Robert Humiston 12/21/2015 -->
+	<!-- Grow function added by CLifton Mayfield -->
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" ></script>
+	<link href="bootstrap-switch.css" rel="stylesheet">
+	<script src="bootstrap-switch.js"></script>
+	<script src="expanding.js"></script>
+	<script src="generate.js"></script>
+	
+	<style>
+
+	</style>
+</head>
+<body>
+	<div class="container" style="margin-top: 10px">
+		<div clase="page-wrapper">
+			
+			<div class="row">
+				<article class=".col-md-8">
+								<div style="float:left">
+									<img src="logo.jpg" >
+								</div>
+
+								<div  style="float:right; margin:20px;">
+
+								  <button type="button" class="btn btn-primary active contract">Technical</button>
+								  <button type="button" class="btn btn-primary contract">Clinical</button>
+								  <button type="button" class="btn btn-primary contract" >Presbyterian</button>
+								</div>
+
+
+								<div style="clear:both; "></div>
+<!-- Technical Form -->
+					<form name="request" class="form-horizontal Technical">
+						<fieldset>
+
+							<!-- Form Name -->
+							<legend>
+								<H3><center><strong>GBS Template Generator</strong></center></h3>
+							</legend>
+							<!-- Text input-->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="User" required >Name</label>  
+							  <div class="col-md-4">
+								<input id="user" name="user" class="form-control input-md Technical" type="text">
+							  </div>
+							</div>
+
+							<!-- Text input-->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="networkID" required >Network ID</label>  
+							  <div class="col-md-4">
+								<input id="networkID" name="networkID" class="form-control input-md Technical" type="text">
+							  </div>
+							</div>
+
+							<!-- Text input-->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="contactNum">Contact Number</label>  
+							  <div class="col-md-4">
+								<input id="contactNum" name="contactNum" class="form-control input-md Technical" type="text">
+							  </div>
+							</div>
+
+							<!-- Text input-->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="hostName">Machine/Hostname</label>  
+							  <div class="col-md-4">
+							  <input id="hostName" name="hostName" class="form-control input-md Technical" type="text">
+							  </div>
+							</div>
+							
+							<!-- Text input-->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="queue">Printer Queue Name</label>  
+							  <div class="col-md-4">
+							  <input id="queue" name="queue" class="form-control input-md Technical" type="text">
+							  </div>
+							</div>
+							
+							<!-- Text input-->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="printerIP">Printer IP</label>  
+							  <div class="col-md-4">
+							  <input id="printerIP" name="printerIP" class="form-control input-md Technical" type="text">
+							  </div>
+							</div>
+
+							<!-- Textarea -->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="location">Location (Building/Floor/Unit/Room): </label>
+							  <div class="col-md-4">                     
+								<input id="location" name="location" class="form-control input-md Technical expand" type="text">
+							  </div>
+							</div>
+
+							<!-- Textinput -->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="textarea">Department</label>
+							  <div class="col-md-4">                     
+								<input id="department" name="department" class="form-control input-md Technical" type="text">
+							  </div>
+							</div>
+
+							<!-- Textarea-->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="textinput" required>Issue</label>  
+							  <div class="col-md-4">
+								<textarea class="form-control Technical expanding" id="issue" name="issue" cols="60" rows="4"></textarea>
+							  </div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-md-4 control-label" for="steps" required>Steps Taken</label>  
+								<div class="col-md-4">
+									<textarea class="form-control Technical expanding" id="steps" name="steps" data-autoresize cols="60" rows="6"></textarea>
+								</div>
+							</div>
+							
+							<!-- Multiple Radios (inline) -->
+							<div class="form-group">
+								<label class="col-md-4 control-label" for="ticketType">Ticket Type</label>
+								<div class="col-md-4"> 
+									<label class="radio-inline" for="ticketType">
+										<input name="ticketType" id="request" value="1" checked="checked" type="radio">
+										Request
+									</label>
+									<label class="radio-inline" for="ticketType">
+										<input name="ticketType" id="incident" value="2" type="radio">
+										Incident
+									</label> 
+								</div>
+							</div>
+							<div class="form-group hidden incident" >
+								<label class="col-md-4 control-label" for="affected" >Who is affected?</label>  
+								<div class="col-md-4">
+									<input id="affected" name="affected" class="form-control input-md Technical" type="text">
+								</div>
+							</div>
+							<div class="form-group hidden incident" >
+								<label class="col-md-4 control-label" >When did this start?</label>  
+								<div class="col-md-4">
+									<input id="start" name="start" class="form-control input-md Technical" type="text">
+								</div>
+							</div>
+							<div class="form-group hidden incident" >
+								<label class="col-md-4 control-label" for="worked" >Did this work before?</label>  
+								<div class="col-md-4">
+									<input id="worked" name="worked" class="form-control input-md Technical" type="text">
+								</div>
+							</div>
+							<div class="form-group hidden incident" >
+								<label class="col-md-4 control-label" for="changed" >Has anything changed since it last worked?</label>  
+								<div class="col-md-4">
+									<input id="changed" name="changed" class="form-control input-md Technical" type="text">
+								</div>
+							</div>
+							<div class="form-group hidden incident" >
+								<label class="col-md-4 control-label" for="errorMessage" >List any error messages</label>  
+								<div class="col-md-4">
+									<textarea id="errorMessage" name="errorMessage" class="form-control input-md Technical" ></textarea>
+								</div>
+							</div>
+							<div class="form-group hidden incident" >
+								<label class="col-md-4 control-label" for="kb"  onclick="reset()" >KB used</label>  
+								<div class="col-md-4">
+									<input id="kb" name="kb" class="form-control input-md Technical" type="text">
+								</div>
+							</div>
+							<a href="#" id="generate" class="btn btn-primary" style="margin: 0 0 10px 35%"><span class="glyphicon glyphicon-ok"></span>Generate</a>
+							<a href="#" id="reset" class="btn btn-danger" style="margin:  0px 0 10px 10px" onclick="resetForm()"><span class="glyphicon glyphicon-refresh"></span>Reset</a>
+
+
+							<!-- Textarea -->
+							<div class="form-group">
+								<label class="col-md-4 control-label" for="template">Template</label>
+								<div class="col-md-4">                     
+									<textarea class="form-control Technical expanding" id="template" name="template"></textarea>
+								</div>
+							</div>
+						</fieldset>
+					</form>
+<!-- end of Technical Form -->
+<!-- Presbyterian Form -->
+					<form name="request" class="form-horizontal Clinical hidden">
+						<fieldset>
+
+							<!-- Form Name -->
+							<legend>
+								<H3><center><strong>GBS Template Generator</strong></center></h3>
+							</legend>
+							<!-- Text input-->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="User" required >Name</label>  
+							  <div class="col-md-4">
+								<input id="user" name="user" class="form-control input-md Clinical" type="text">
+							  </div>
+							</div>
+
+							<!-- Text input-->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="networkID" required >Network ID</label>  
+							  <div class="col-md-4">
+								<input id="networkID" name="networkID" class="form-control input-md Clinical" type="text">
+							  </div>
+							</div>
+
+							<!-- Text input-->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="contactNum">Contact Number</label>  
+							  <div class="col-md-4">
+								<input id="contactNum" name="contactNum" class="form-control input-md Clinical" type="text">
+							  </div>
+							</div>
+
+							<!-- Text input-->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="hostName">Machine/Hostname</label>  
+							  <div class="col-md-4">
+							  <input id="hostName" name="hostName" class="form-control input-md Clinical" type="text">
+							  </div>
+							</div>
+							
+							<!-- Text input-->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="queue">Printer Queue Name</label>  
+							  <div class="col-md-4">
+							  <input id="queue" name="queue" class="form-control input-md Clinical" type="text">
+							  </div>
+							</div>
+							
+							<!-- Text input-->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="printerIP">Printer IP</label>  
+							  <div class="col-md-4">
+							  <input id="printerIP" name="printerIP" class="form-control input-md Clinical" type="text">
+							  </div>
+							</div>
+
+							<!-- Textarea -->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="location">Location (Building/Floor/Unit/Room): </label>
+							  <div class="col-md-4">                     
+								<input id="location" name="location" class="form-control input-md expand Clinical" type="text">
+							  </div>
+							</div>
+
+							<!-- Textinput -->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="textarea">Department</label>
+							  <div class="col-md-4">                     
+								<input id="department" name="department" class="form-control input-md Clinical" type="text">
+							  </div>
+							</div>
+
+							<!-- Textarea-->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="textinput" required>Issue</label>  
+							  <div class="col-md-4">
+								<textarea class="form-control Clinical expanding" id="issue" name="issue" cols="60" rows="4"></textarea>
+							  </div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-md-4 control-label" for="steps" required>Steps Taken</label>  
+								<div class="col-md-4">
+									<textarea class="form-control Clinical expanding" id="steps" name="steps" data-autoresize cols="60" rows="6"></textarea>
+								</div>
+							</div>
+							
+							<!-- Multiple Radios (inline) -->
+							<div class="form-group">
+								<label class="col-md-4 control-label" for="ticketType">Ticket Type</label>
+								<div class="col-md-4"> 
+									<label class="radio-inline" for="ticketType">
+										<input name="ticketType" id="request" value="1" checked="checked" type="radio">
+										Request
+									</label>
+									<label class="radio-inline" for="ticketType">
+										<input name="ticketType" id="incident" value="2" type="radio">
+										Incident
+									</label> 
+								</div>
+							</div>
+							<div class="form-group hidden incident" >
+								<label class="col-md-4 control-label" for="affected" >Who is affected?</label>  
+								<div class="col-md-4">
+									<input id="affected" name="affected" class="form-control input-md Clinical" type="text">
+								</div>
+							</div>
+							<div class="form-group hidden incident" >
+								<label class="col-md-4 control-label" >When did this start?</label>  
+								<div class="col-md-4">
+									<input id="start" name="start" class="form-control input-md Clinical" type="text">
+								</div>
+							</div>
+							<div class="form-group hidden incident" >
+								<label class="col-md-4 control-label" for="worked" >Did this work before?</label>  
+								<div class="col-md-4">
+									<input id="worked" name="worked" class="form-control input-md Clinical" type="text">
+								</div>
+							</div>
+							<div class="form-group hidden incident" >
+								<label class="col-md-4 control-label" for="changed" >Has anything changed since it last worked?</label>  
+								<div class="col-md-4">
+									<input id="changed" name="changed" class="form-control input-md Clinical" type="text">
+								</div>
+							</div>
+							<div class="form-group hidden incident" >
+								<label class="col-md-4 control-label" for="errorMessage" >List any error messages</label>  
+								<div class="col-md-4">
+									<input id="errorMessage" name="errorMessage" class="form-control input-md Clinical" type="text">
+								</div>
+							</div>
+							<div class="form-group hidden incident" >
+								<label class="col-md-4 control-label Clinical" for="kb" >KB used</label>  
+								<div class="col-md-4">
+									<input id="kb" name="kb" class="form-control input-md" type="text">
+								</div>
+							</div>
+							<a href="#" id="generate" class="btn btn-primary" style="margin: 0 0 10px 35%"  "><span class="glyphicon glyphicon-ok"></span>Generate</a>
+							<a href="#" id="reset" class="btn btn-danger" style="margin:  0px 0 10px 10px" onclick="resetForm()"><span class="glyphicon glyphicon-refresh"></span>Reset</a>
+
+
+							<!-- Textarea -->
+							<div class="form-group">
+								<label class="col-md-4 control-label" for="template">Template</label>
+								<div class="col-md-4">                     
+									<textarea class="form-control Clinical expanding" id="template" name="template"></textarea>
+								</div>
+							</div>
+						</fieldset>
+					</form>
+<!-- End of Clinical Form -->
+<!-- Clinical Form -->
+					<form name="request" class="form-horizontal Presbyterian hidden">
+						<fieldset>
+
+							<!-- Form Name -->
+							<legend>
+								<H3><center><strong>GBS Template Generator</strong></center></h3>
+							</legend>
+							
+							<!-- Text input-->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="contactNum">Contact Number</label>  
+							  <div class="col-md-4">
+								<input id="contactNum" name="contactNum" class="form-control input-md" type="text">
+							  </div>
+							</div>
+
+							<!-- Text input-->
+							<div class="form-group">
+								<label class="col-md-4 control-label" for="altNum">Alt Number</label>  
+								<div class="col-md-4">
+									<input id="altNum" name="altNum" class="form-control input-md" type="text">
+								</div>
+							</div>
+							
+							<!-- Text input-->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="networkID" required >User ID</label>  
+							  <div class="col-md-4">
+								<input id="networkID" name="networkID" class="form-control input-md" type="text">
+							  </div>
+							</div>
+							
+							<!-- Textarea -->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="location">Current Location (Building/Floor/Unit/Room): </label>
+							  <div class="col-md-4">                     
+								<input id="location" name="location" class="form-control input-md expand" type="text">
+							  </div>
+							</div>
+
+							<!-- Text input-->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="hostName">PCID</label>  
+							  <div class="col-md-4">
+							  <input id="hostName" name="hostName" class="form-control input-md" type="text">
+							  </div>
+							</div>
+
+							<!-- Textarea-->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="textinput" required>Issue</label>  
+							  <div class="col-md-4">
+								<textarea class="form-control expanding" id="issue" name="issue" cols="60" rows="4"></textarea>
+							  </div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-md-4 control-label" for="steps" required>Steps Taken</label>  
+								<div class="col-md-4">
+									<textarea class="form-control expanding" id="steps" name="steps" data-autoresize cols="60" rows="6"></textarea>
+								</div>
+							</div>
+							
+							<!-- Multiple Radios (inline) -->
+							<div class="form-group">
+								<label class="col-md-4 control-label" for="ticketType">Ticket Type</label>
+								<div class="col-md-4"> 
+									<label class="radio-inline" for="ticketType">
+										<input name="ticketType" id="request" value="1" checked="checked" type="radio">
+										Request
+									</label>
+									<label class="radio-inline" for="ticketType">
+										<input name="ticketType" id="incident" value="2" type="radio">
+										Incident
+									</label> 
+								</div>
+							</div>
+							<div class="form-group hidden incident" >
+								<label class="col-md-4 control-label" for="affected" >Who is affected?</label>  
+								<div class="col-md-4">
+									<input id="affected" name="affected" class="form-control input-md" type="text">
+								</div>
+							</div>
+							<div class="form-group hidden incident" >
+								<label class="col-md-4 control-label" >When did this start?</label>  
+								<div class="col-md-4">
+									<input id="start" name="start" class="form-control input-md" type="text">
+								</div>
+							</div>
+							<div class="form-group hidden incident" >
+								<label class="col-md-4 control-label" for="worked" >Did this work before?</label>  
+								<div class="col-md-4">
+									<input id="worked" name="worked" class="form-control input-md" type="text">
+								</div>
+							</div>
+							<div class="form-group hidden incident" >
+								<label class="col-md-4 control-label" for="changed" >Has anything changed since it last worked?</label>  
+								<div class="col-md-4">
+									<input id="changed" name="changed" class="form-control input-md" type="text">
+								</div>
+							</div>
+							<div class="form-group hidden incident" >
+								<label class="col-md-4 control-label" for="errorMessage" >List any error messages</label>  
+								<div class="col-md-4">
+									<input id="errorMessage" name="errorMessage" class="form-control input-md" type="text">
+								</div>
+							</div>
+							<div class="form-group hidden incident" >
+								<label class="col-md-4 control-label" for="kb" >KB used</label>  
+								<div class="col-md-4">
+									<input id="kb" name="kb" class="form-control input-md" type="text">
+								</div>
+							</div>
+							<a href="#" id="generate" class="btn btn-primary" style="margin: 0 0 10px 35%"><span class="glyphicon glyphicon-ok"></span>Generate</a>
+							<a href="#" id="reset" class="btn btn-danger" style="margin:  0px 0 10px 10px" onclick="resetForm()"> ><span class="glyphicon glyphicon-refresh"></span>Reset</a>
+
+
+							<!-- Textarea -->
+							<div class="form-group">
+								<label class="col-md-4 control-label" for="template">Template</label>
+								<div class="col-md-4">                     
+									<textarea class="form-control expanding" id="template" name="template"></textarea>
+								</div>
+							</div>
+						</fieldset>
+					</form>
+<!-- End of Presbyterian Form -->
+				</article>	
+			</div>
+		</div>
+	</div>
+</body>
+</html>
